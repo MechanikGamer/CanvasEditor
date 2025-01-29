@@ -1,50 +1,74 @@
-# React + TypeScript + Vite
+# CanvasEditor
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A **React + TypeScript + Tailwind CSS** project scaffolded with [Vite](https://vitejs.dev/) for building a graphical content editor (text + images).
 
-Currently, two official plugins are available:
+## Table of Contents
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+1. [Project Setup](#project-setup)
+2. [Scripts](#scripts)
+3. [Technologies](#technologies)
+4. [Features](#features)
+5. [Additional Info](#additional-info)
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Project Setup
 
-- Configure the top-level `parserOptions` property like this:
+1. **Install dependencies**:
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+   ```bash
+   yarn
+   ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+2. **Development server**:
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+   ```bash
+   yarn dev
+   ```
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+   By default, it runs on [http://localhost:5173](http://localhost:5173).
+
+3. **Build for production**:
+
+   ```bash
+   yarn build
+   ```
+
+4. **Preview production build**:
+   ```bash
+   yarn preview
+   ```
+
+---
+
+## Scripts
+
+- `yarn dev` – Starts the development server.
+- `yarn build` – Builds the application for production.
+- `yarn preview` – Serves the built application locally.
+
+---
+
+## Technologies
+
+- **Framework**: [React](https://reactjs.org/)
+- **Language**: [TypeScript](https://www.typescriptlang.org/)
+- **Styling**: [Tailwind CSS](https://tailwindcss.com/)
+- **Bundler/Dev Server**: [Vite](https://vitejs.dev/)
+- **Package Manager**: [Yarn](https://yarnpkg.com/)
+
+---
+
+## Features
+
+- **Canvas-based editor** for text and images.
+- **Drag & Drop** to position elements.
+- **Resizable elements**
+- **Export to PNG**
+
+---
+
+## Additional Info
+
+- This project uses **Tailwind** for rapid UI styling.
+- For any questions or issues, feel free to open an issue or contact the maintainer.
