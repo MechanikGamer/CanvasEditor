@@ -12,6 +12,7 @@ export default {
         white: "#FFFFFF",
         white98: "#FAFAFA",
         white97: "#F7F7F8",
+        buttonPrimary: "#7209B7",
       },
       fontFamily: {
         sans: ["Poppins", "sans-serif"],
