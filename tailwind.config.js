@@ -4,7 +4,7 @@ export default {
     extend: {
       colors: {
         primary: "#3762FB",
-        primary50: "rgba(114, 9, 183, 0.5);",
+        primary50: "rgba(114, 9, 183, 0.5)",
         black100: "#353535",
         black75: "#676767",
         black50: "#9B9B9B",
