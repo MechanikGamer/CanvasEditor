@@ -39,7 +39,14 @@ const CanvasEditor: React.FC = () => {
 
   const addImage = (src: string) => {
     setIsEditing(true);
-    setElements((prev) => [...prev, { id: Date.now(), type: "image", src }]);
+    const img = new Image();
+    img.onload = () => {
+      setElements((prev) => [...prev, { id: Date.now(), type: "image", src }]);
+    };
+    img.onerror = () => {
+      alert("Failed to load image. Please try again with a different image.");
+    };
+    img.src = src;
   };
 
   const handleExport = () => {
