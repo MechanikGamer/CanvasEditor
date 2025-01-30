@@ -6,17 +6,17 @@ interface ResetButtonProps {
 
 const ResetButton = ({ handleReset }: ResetButtonProps) => {
   return (
-    <div
+    <button
       onClick={handleReset}
-      className="flex items-center border-b-2 border-[#CB0000] cursor-pointer hover:bg-[#F7F7F8] transition-all px-2"
+      className="flex items-center border-b-2 border-[#CB0000] hover:bg-white97 transition-all px-2"
     >
-      <div className="text-[#CB0000] font-medium tex-[18px]">Reset</div>
+      <div className="text-[#CB0000] font-medium text-[18px]">Reset</div>
       <img
         src={ResetIcon}
         alt="ResetIcon"
         className="pl-2 w-8 h-8 object-cover"
       />
-    </div>
+    </button>
   );
 };
 

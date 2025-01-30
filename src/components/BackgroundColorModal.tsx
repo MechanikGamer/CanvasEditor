@@ -25,12 +25,16 @@ const BackgroundColorModal = ({
   return (
     <div className="fixed inset-0 flex items-center justify-center bg-gray-900 bg-opacity-40 backdrop-blur-md">
       <div className="bg-white p-6 rounded-lg shadow-lg">
-        <h2 className="text-lg font-bold mb-4">Select Background Color</h2>
+        <h2 id="modal-title" className="text-lg font-bold mb-4">
+          Select Background Color
+        </h2>
         <input
           type="color"
           value={selectedColor}
           onChange={(e) => handleColorPick(e.target.value)}
           className="w-full h-12 cursor-pointer"
+          aria-label="Color picker"
+          role="colorpicker"
         />
         <div className="flex justify-center mt-4 gap-10">
           <button

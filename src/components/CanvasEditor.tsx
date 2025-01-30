@@ -50,6 +50,8 @@ const CanvasEditor: React.FC = () => {
           toPng(canvasRef.current, {
             width: 1080,
             height: 1350,
+            quality: 0.95,
+            cacheBust: true,
           })
             .then((dataUrl) => {
               const link = document.createElement("a");
@@ -61,8 +63,8 @@ const CanvasEditor: React.FC = () => {
               console.error("Export failed:", err);
             })
             .finally(() => {
-              setIsExporting(false);
               canvasRef.current?.classList.remove("exporting");
+              setTimeout(() => setIsExporting(false), 100);
             });
         }
       }, 100);

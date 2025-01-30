@@ -28,23 +28,33 @@ const CanvasItem: React.FC<CanvasItemProps> = ({
   const handleKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
     if (e.key.length === 1) {
       e.preventDefault();
-      document.execCommand("insertText", false, e.key);
+      const selection = window.getSelection();
+      const range = selection?.getRangeAt(0);
+      if (range) {
+        range.deleteContents();
+        range.insertNode(document.createTextNode(e.key));
+        range.collapse(false);
+      }
     }
   };
+  const PLACEHOLDER_TEXT = "Type your text here";
 
   const handleFocus = () => {
-    if (
-      !isFocused &&
-      contentRef.current?.textContent === "Type your text here"
-    ) {
-      contentRef.current.textContent = "";
+    const content = contentRef.current;
+    if (!content) return;
+
+    if (!isFocused && content.textContent === PLACEHOLDER_TEXT) {
+      content.textContent = "";
       setIsFocused(true);
     }
   };
 
   const handleBlur = () => {
-    if (contentRef.current?.textContent?.trim() === "") {
-      contentRef.current.textContent = "Type your text here";
+    const content = contentRef.current;
+    if (!content) return;
+
+    if (content.textContent?.trim() === "") {
+      content.textContent = PLACEHOLDER_TEXT;
       setIsFocused(false);
     }
   };
@@ -91,6 +101,9 @@ const CanvasItem: React.FC<CanvasItemProps> = ({
         ) : (
           <div
             ref={contentRef}
+            role="textbox"
+            aria-multiline="true"
+            aria-label="Editable text content"
             contentEditable
             suppressContentEditableWarning
             onKeyDown={handleKeyDown}
