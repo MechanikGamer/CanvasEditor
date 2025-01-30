@@ -49,7 +49,7 @@ const Sidebar: React.FC<SidebarProps> = ({
 
   return (
     <div className="w-full h-full flex flex-col">
-      <div className="flex items-center justify-between">
+      <div className="hidden md:flex items-center justify-between">
         <LogoComponent />
         <ResetButton handleReset={handleReset} />
       </div>
@@ -59,46 +59,48 @@ const Sidebar: React.FC<SidebarProps> = ({
         <h2 className="text-lg font-bold text-[#353535]">Add Content</h2>
       </div>
 
-      <div className="flex justify-between gap-6 mt-8 min-h-[250px]">
-        {buttons.map(({ label, image, onClick }) => (
-          <button
-            key={label}
-            onClick={onClick}
-            className="relative w-1/2 bg-[#F7F7F8] py-6 rounded-lg hover:bg-gray-200 flex flex-col justify-center items-center cursor-pointer min-h-[250px]"
+      <div className="h-full">
+        <div className="flex justify-between gap-6 mt-8 min-h-[250px] ">
+          {buttons.map(({ label, image, onClick }) => (
+            <button
+              key={label}
+              onClick={onClick}
+              className="relative w-1/2 bg-[#F7F7F8] py-6 rounded-lg hover:bg-gray-200 flex flex-col justify-center items-center cursor-pointer min-h-[250px]"
+            >
+              <img
+                src={image}
+                alt={label}
+                className="w-20 h-20 object-cover mb-4"
+              />
+              <span className="absolute bottom-4 text-[18px] font-medium text-[#353535]">
+                {label}
+              </span>
+            </button>
+          ))}
+        </div>
+
+        <input
+          ref={fileInputRef}
+          type="file"
+          accept="image/*"
+          className="hidden"
+          onChange={handleImageUpload}
+        />
+
+        <div className="gap-6 mr-[22px] flex mt-2">
+          <div
+            className="relative flex flex-col w-1/2 bg-[#F7F7F8] p-6 mt-4 rounded-[10px] items-center justify-center hover:bg-gray-200 cursor-pointer min-h-[250px] mr-[29px] gap-6"
+            onClick={handleBackgroundModal}
           >
             <img
-              src={image}
-              alt={label}
+              src={ChangeBackground}
+              alt="Background"
               className="w-20 h-20 object-cover mb-4"
             />
             <span className="absolute bottom-4 text-[18px] font-medium text-[#353535]">
-              {label}
+              Background
             </span>
-          </button>
-        ))}
-      </div>
-
-      <input
-        ref={fileInputRef}
-        type="file"
-        accept="image/*"
-        className="hidden"
-        onChange={handleImageUpload}
-      />
-
-      <div className="gap-6 mr-[22px] flex mt-2">
-        <div
-          className="relative flex flex-col w-1/2 bg-[#F7F7F8] p-6 mt-4 rounded-[10px] items-center justify-center hover:bg-gray-200 cursor-pointer min-h-[250px] mr-[29px] gap-6"
-          onClick={handleBackgroundModal}
-        >
-          <img
-            src={ChangeBackground}
-            alt="Background"
-            className="w-20 h-20 object-cover mb-4"
-          />
-          <span className="absolute bottom-4 text-[18px] font-medium text-[#353535]">
-            Background
-          </span>
+          </div>
         </div>
       </div>
 

@@ -3,6 +3,8 @@ import { toPng } from "html-to-image";
 import CanvasArea from "./CanvasArea";
 import Sidebar from "./Sidebar";
 import BackgroundColorModal from "./BackgroundColorModal";
+import ResetButton from "./ResetButton";
+import LogoComponent from "./LogoComponent";
 
 export interface CanvasElement {
   id: number;
@@ -79,8 +81,12 @@ const CanvasEditor: React.FC = () => {
   };
 
   return (
-    <div className="px-4 flex flex-row md:flex-col min-h-screen  py-[66px] lg:px-[189px] gap-24 w-full h-full">
+    <div className="px-4 flex flex-row md:flex-col min-h-screen  py-[66px] xl:px-[100px] 2xl:px-[189px] gap-24 w-full h-full">
       <div className="flex gap-6 flex-1 flex-col md:flex-row">
+        <div className="flex md:hidden items-center justify-between">
+          <LogoComponent />
+          <ResetButton handleReset={handleReset} />
+        </div>
         <div className="flex gap-24 w-full md:w-1/2 ">
           <CanvasArea
             canvasRef={canvasRef}
