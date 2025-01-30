@@ -1,11 +1,16 @@
 import { render, screen } from "@testing-library/react";
+import Separator from "../Separator";
 
-function Separator() {
-  return <div role="separator" className="separator" />;
-}
+describe("Separator", () => {
+  it("renders with correct role", () => {
+    render(<Separator />);
+    const separator = screen.getByRole("separator");
+    expect(separator).toBeInTheDocument();
+  });
 
-test("renders a separator div with correct styles", () => {
-  render(<Separator />);
-  const separator = screen.getByRole("separator");
-  expect(separator).toBeInTheDocument();
+  it("applies correct styles", () => {
+    render(<Separator />);
+    const separator = screen.getByRole("separator");
+    expect(separator).toHaveClass("w-full", "my-8", "h-[2px]", "bg-[#FAFAFA]");
+  });
 });
